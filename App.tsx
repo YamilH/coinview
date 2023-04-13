@@ -1,7 +1,6 @@
 import { View, Text, FlatList, StyleSheet, TextInput, StatusBar } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import ComponenteCoinItem from './components/CoinItem'
-import Looader from './components/Loader'
 
 interface Coin {
 id: string;
@@ -35,7 +34,6 @@ loadData();
 return (
 
 <View style={styles.container}>
-{/* <Looader /> */}
 <StatusBar backgroundColor="#141414" />
 <View style={styles.header}>
 <Text style={styles.title}>CoinView</Text>
