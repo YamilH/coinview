@@ -2,6 +2,7 @@
   "expo": {
     "name": "coinview",
     "slug": "coinview",
+    "description": "This is an app that helps you to track the price of the major cryptocurrencies",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
