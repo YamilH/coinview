@@ -1,6 +1,8 @@
-import { View, Text, FlatList, StyleSheet, TextInput, StatusBar } from 'react-native'
+import { View, Text, FlatList, StyleSheet, TextInput, StatusBar, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import ComponenteCoinItem from './components/CoinItem'
+import ComponenteFooter from './components/Footer'
+import astro from './assets/astronaut50.png'
 
 interface Coin {
 id: string;
@@ -37,6 +39,9 @@ return (
 <StatusBar backgroundColor="#141414" />
 <View style={styles.header}>
 <Text style={styles.title}>CoinView</Text>
+
+<Image style={styles.image} source={astro} />
+
 <TextInput
 style={styles.searchInput}
 placeholder='Search a Coin'
@@ -44,6 +49,7 @@ placeholderTextColor='#858585'
 onChangeText={text => setSearch(text)}
 />
 </View>
+
 
 <FlatList
     style={styles.list}
@@ -61,10 +67,13 @@ onChangeText={text => setSearch(text)}
       setRefreshing(true);
       await loadData();
       setRefreshing(false);
-    }}
+    }
+  }
   />
-</View>
 
+  <ComponenteFooter />
+  
+</View>
 );
 }
 
@@ -79,8 +88,14 @@ color: '#fff',
 marginTop: 10,
 fontSize: 20,
 },
+image: {
+  width: 40,
+  height: 40,
+  },
 list: {
 width: '90%',
+// paddingBottom: 40,
+marginBottom: 25,
 },
 header: {
 flexDirection: 'row',
@@ -94,7 +109,7 @@ borderBottomColor: '#4657CE',
 borderBottomWidth: 1,
 width: '40%',
 textAlign: 'center',
-},
+}
 });
 
 export default App;

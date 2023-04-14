@@ -10,8 +10,10 @@ interface Coin {
   price_change_percentage_24h: number;
 }
 
+
 const CoinItem: React.FC<{ coin: Coin }> = ({ coin }) => {
 return (
+
 <View style={styles.containerItem}>
 <View style={styles.coinNames}>
 <Image style={styles.image} source={{ uri: coin.image }} />
@@ -22,16 +24,17 @@ return (
 </View>
 <View>
 <Text style={styles.textPrice}>${coin.current_price}</Text>
-<Text
-style={[
-styles.pricePercentage,
-coin.price_change_percentage_24h > 0 ? styles.priceUp : styles.priceDown,
-]}
->
-{coin.price_change_percentage_24h}
+<View style={styles.forVector}>
+
+<Text style={{ color: coin.price_change_percentage_24h > 0 ? '#00b960' : '#fc4422' }}>
+  {coin.price_change_percentage_24h > 0 ? '▲ ' : '▼ '}
+  {Math.abs(coin.price_change_percentage_24h)}%
 </Text>
+
 </View>
 </View>
+</View>
+
 )
 }
 
@@ -40,7 +43,7 @@ containerItem: {
 backgroundColor: '#121212',
 paddingTop: 10,
 flexDirection: 'row',
-justifyContent: 'space-between',
+justifyContent: 'space-between'
 },
 containerNames: {
 marginLeft: 10,
@@ -62,17 +65,15 @@ textTransform: 'uppercase',
 pricePercentage: {
 color: '#fff',
 textAlign: 'right',
+paddingLeft: 6,
 },
 textPrice: {
 color: '#fff',
 textAlign: 'right',
 },
-priceUp: {
-color: '#00b5b9',
-},
-priceDown: {
-color: '#fc4422',
-},
+forVector: {
+  flexDirection: 'row',
+}
 })
 
 export default CoinItem
